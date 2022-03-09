@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 require('./config/dataBase');
 
-const userRoutes = require('./routes/userRoute');
-const checkAuth = require('./middleware/checkAuth')
+const userRoutes = require('./routes/userRoutes');
+const postRoutes = require('./routes/postRoutes');
+
 
 app.use(express.json());
 
@@ -21,9 +22,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/user', userRoutes);
-
-app.get('/', checkAuth, (req, res, next) => {
-    res.status(201).send({ message: 'Hello World' });
-});
+app.use('/api/post', postRoutes);
 
 module.exports = app;

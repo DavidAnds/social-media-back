@@ -20,8 +20,12 @@ const userSchema = mongoose.Schema({
         required: true,
     },
     bio: {
-        type: String
-    }
+        type: String,
+    },
+    likes: {
+        type: [String],
+        required: true,
+    },
 });
 
 userSchema.plugin(uniqueValidator);
